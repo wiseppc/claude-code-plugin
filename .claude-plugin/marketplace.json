@@ -1,0 +1,14 @@
+{
+  "name": "wiseppc",
+  "owner": {
+    "name": "Crystal Logistics Corp / WisePPC"
+  },
+  "plugins": [
+    {
+      "name": "wiseppc",
+      "source": "./plugins/wiseppc",
+      "description": "WisePPC Amazon Ads and seller analytics tools and skills"
+    }
+  ],
+  "description": "WisePPC tools and skills for Claude Code"
+}

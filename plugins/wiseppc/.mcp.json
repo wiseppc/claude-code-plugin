@@ -1,0 +1,9 @@
+{
+  "wiseppc": {
+    "type": "http",
+    "url": "https://mcp.wiseppc.com/mcp",
+    "headers": {
+      "Authorization": "Bearer ${user_config.api_key}"
+    }
+  }
+}
