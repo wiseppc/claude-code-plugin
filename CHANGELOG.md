@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.2 - 2026-10-07
+
+- The plugin manifest now declares the MIT license too (0.1.1 changed the LICENSE file but left the manifest saying `UNLICENSED`).
+
 ## 0.1.1 - 2026-10-07
 
 - The plugin is now released under the MIT license: you may use, copy, modify and redistribute it without restriction.
