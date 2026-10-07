@@ -68,7 +68,7 @@ change your WisePPC account or your API key's permissions. Revoke keys on the AP
 
 ## License
 
-Proprietary. All Rights Reserved. Crystal Logistics Corp / WisePPC. See [LICENSE](LICENSE).
+MIT. Copyright (c) 2026 Crystal Logistics Corp / WisePPC. See [LICENSE](LICENSE).
 
 ## Building from source
 

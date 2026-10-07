@@ -1,6 +1,6 @@
 {
   "name": "wiseppc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Amazon Ads and seller analytics for WisePPC. Connects Claude Code to the WisePPC MCP server for analytics, and submits changes that a person approves in WisePPC or that are sent directly, as your API key's grants decide.",
   "author": {
     "name": "Crystal Logistics Corp / WisePPC"

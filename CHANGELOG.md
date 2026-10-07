@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 - 2026-10-07
+
+- The plugin is now released under the MIT license: you may use, copy, modify and redistribute it without restriction.
+
 ## 0.1.0 - 2026-10-07
 
 First public release of the WisePPC plugin for Claude Code.
