@@ -1,14 +1,20 @@
 {
   "name": "wiseppc",
   "owner": {
-    "name": "Crystal Logistics Corp / WisePPC"
+    "name": "Crystal Logistics Corp / WisePPC",
+    "url": "https://wiseppc.com"
   },
   "plugins": [
     {
       "name": "wiseppc",
       "source": "./plugins/wiseppc",
-      "description": "WisePPC Amazon Ads and seller analytics tools and skills"
+      "description": "Amazon Ads PPC management and Seller Central analytics in Claude Code: analyze campaigns, search terms, ASINs, listings, Brand Store and Attribution, then submit changes through WisePPC."
+    },
+    {
+      "name": "wiseppc-live",
+      "source": "./plugins/wiseppc-live",
+      "description": "Opt-in WisePPC build with live event notifications as a Claude Code channel. Runs a local server that signs in to WisePPC and proxies the same tools. Install it instead of wiseppc, not alongside."
     }
   ],
-  "description": "WisePPC tools and skills for Claude Code"
+  "description": "WisePPC: Amazon Ads PPC management and Seller Central analytics for Claude Code"
 }
