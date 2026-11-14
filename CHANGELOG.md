@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1 - 2026-11-14
+
+- The analytics skill now names `run_sql` for raw SQL, WisePPC's new name for `run_query`. The old name keeps working until 2027-01-31.
+
 ## 0.3.0 - 2026-11-12
 
 Two plugins now ship in one marketplace: `wiseppc` (standard) and the opt-in `wiseppc-live`.

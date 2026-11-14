@@ -15,7 +15,7 @@ Read-only analysis of live WisePPC data. This skill never changes anything in Am
 
 ## Prefer structured `query`
 
-Use `query` with `describe(kind="datasets")`; use `run_query` (raw SQL) only for what `query` cannot express. A rejected `query` returns the legal vocabulary so you can correct it.
+Use `query` with `describe(kind="datasets")`; use `run_sql` (raw SQL) only for what `query` cannot express. A rejected `query` returns the legal vocabulary so you can correct it.
 
 1. **`describe(kind="datasets")` with no `id`**: the index of datasets (id, domain, grain; a snapshot dataset has no time series). Families:
    - **Ads performance:** `ads_performance`, `searchterm` (customer search terms), `product_performance`, `conversion_performance`
@@ -45,7 +45,7 @@ Use `query` with `describe(kind="datasets")`; use `run_query` (raw SQL) only for
 - `report_status` of `NOT_STARTED` does not mean there is no data: check coverage in `describe(kind="datasets")`.
 - Money is in the profile's native currency (USD, GBP, CAD, and so on). Do not convert or mix currencies across profiles.
 
-### Raw SQL (`run_query`)
+### Raw SQL (`run_sql`)
 
 Raw SQL is an ordinary read: a new connection already has it, so you do not need an opt-in. It is still the escape hatch. Call `describe(kind="tables")` first, and use it only for cross-table joins, window functions (`LAG`, `LEAD`, `ROW_NUMBER`), arrays or CTEs. Say why `query` was not enough. Every `ads_olap` scan needs a literal lower bound on `time_window_date`.
 
