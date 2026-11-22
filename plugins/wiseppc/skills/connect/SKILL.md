@@ -22,7 +22,7 @@ WisePPC signs in with OAuth through Claude Code. There is no key to paste into a
 1. Check `/mcp` for existing WisePPC connections before enabling another, and keep **only one active WisePPC connection**. Never rewrite Claude settings on the user's behalf.
 2. The user runs `/mcp`, picks `wiseppc` and chooses Authenticate. The browser opens WisePPC; they sign in, choose the business, and approve.
 3. One connection is bound to **one business**. A different business needs another authorization; `get_session_context(section="business_profiles")` shows the bound business and cannot switch it.
-4. A connection is **read-only**: Claude never changes your Amazon account by itself. It proposes changes through WisePPC for a person to approve there. Owners and admins decide in WisePPC (**AI Integration → Connections & Permissions**) which changes a connection may propose and whether any may run without approval. Changes apply on the next call; no reconnecting, no new conversation.
+4. Changes are **gated by default**: on what the connection reads, Claude can queue a change, and a person approves it in WisePPC before anything reaches Amazon. Owners and admins can set an operation to **direct** (sent without review once the user confirms in chat) or off, per account, in WisePPC (**AI Integration → Connections & Permissions**). Changes apply on the next call; no reconnecting, no new conversation.
 5. Only a signed-in person can approve. Do not try to complete the browser steps, and never ask for passwords, MFA codes or tokens in chat.
 
 ## Check the connection
@@ -34,7 +34,7 @@ WisePPC signs in with OAuth through Claude Code. There is no key to paste into a
 
 ## Reading the permissions
 
-Reads are granted per Ads account/profile and per seller/marketplace. Writes are granted per marketplace unit and per operation, and each granted write is either **gated** (a person approves it) or **direct** (queued and sent unreviewed). A tool being listed does not mean the connection may use it on every account: tools stay listed whatever the grants. A refusal leads with a reason code; name the missing permission and let the user decide whether to widen it.
+Reads are granted per Ads account/profile and per seller/marketplace. Writes follow the reads: on what the connection reads, each write operation is **gated** (a person approves it) unless a grant sets it to **direct** (queued and sent unreviewed) or off for one marketplace unit. `key_grants.write_default` `off` means granted writes only. Archiving (deleting) Ads campaigns, ad groups, ads and targets is always gated. A tool being listed does not mean the connection may use it on every account: tools stay listed whatever the grants. A refusal leads with a reason code; name the missing permission and let the user decide whether to widen it.
 
 ## When something is wrong
 
@@ -45,9 +45,9 @@ Reads are granted per Ads account/profile and per seller/marketplace. Writes are
 - **An older connection that is refused:** re-authorize through `/mcp`.
 - **A non-active Amazon connection answers like an unknown account.** Say that the account is not connected or not active in WisePPC.
 
-## What an OAuth connection cannot do
+## The REST API
 
-The WisePPC REST API (whole listing and catalog records in Amazon's shape, Multi-Channel Fulfillment orders, seller listing writes) and ordinary webhooks use a WisePPC API key, not this sign-in. API keys still work for other MCP clients and the REST API: see wiseppc.com/docs/mcp. Never ask the user to type a key into chat, and never print or store one.
+For whole listing and catalog records in Amazon's shape, Multi-Channel Fulfillment orders, a full listing `put`, or results too large for the size-capped MCP tools, `issue_rest_token` gives a short-lived token (5 to 60 minutes) for the WisePPC REST API (`/api/v1`) with this connection's own permissions, checked live on every call. It can be narrowed (`read_only`, `kinds`, `target`, `write_capabilities`). The token is a secret: pass it through an environment variable to the command that uses it, never into chat or files. Ordinary webhooks are set up on a WisePPC API key in the web app; API keys still work for other MCP clients (see wiseppc.com/docs/mcp). Never ask the user to type a key or token into chat, and never print or store one.
 
 ## Safety
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.2 - 2026-11-22
+
+- The skills and README now describe WisePPC's current write rules. Changes on what a connection reads are gated by default (a person approves each one), and an owner or admin can set an operation to direct or off. Rule creation, creative assets, Multi-Channel Fulfillment cancels and revisions follow the connection's permission; archiving (deleting) Ads campaigns, ad groups, ads and targets is always gated.
+- A sign-in connection can now use the WisePPC REST API: `issue_rest_token` gives a short-lived token with the connection's own permissions, for whole records, large results and full listing replacements. Listing patches and deletes queue through `submit_mutation`.
+
 ## 0.3.1 - 2026-11-14
 
 - The analytics skill now names `run_sql` for raw SQL, WisePPC's new name for `run_query`. The old name keeps working until 2027-01-31.

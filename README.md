@@ -62,16 +62,18 @@ Two plugins are available in the same marketplace. **Choose one; never install b
 3. Back in Claude Code, run `/wiseppc:connect` to check the connection.
 
 - **One connection is bound to one business.** To use another business, authorize again for it.
-- **A new connection is read-only:** Claude never changes your Amazon account by itself. It proposes changes
-  through WisePPC for a person to approve there. Owners and admins decide in WisePPC (**AI Integration →
-  Connections & Permissions**) which changes a connection may propose and whether any may run without approval.
-  Permission changes apply on the next call; you do not need to reconnect or start a new conversation.
+- **Changes are gated by default:** Claude never changes your Amazon account by itself. On what the connection
+  can read, it can queue a change, and a person approves it in WisePPC before anything reaches Amazon. Owners
+  and admins can set an operation to direct (sent without review) or off, per account, in WisePPC (**AI
+  Integration → Connections & Permissions**). Permission changes apply on the next call; you do not need to
+  reconnect or start a new conversation.
 - Only a signed-in person can approve a connection, and Claude never sees your password.
 - If the WisePPC MCP server is already configured in Claude Code (check `/mcp`), keep only one active
   connection: disable the other with Claude's MCP controls. The plugin never edits your existing Claude
   configuration.
 
-(`wiseppc-live` signs in by itself instead; see above.) WisePPC API keys still work for other MCP clients and for the REST API. See
+(`wiseppc-live` signs in by itself instead; see above.) For whole records and large results, Claude can get a
+short-lived REST API token for your connection, with the same permissions. WisePPC API keys still work for other MCP clients and for the REST API. See
 [wiseppc.com/docs/mcp](https://wiseppc.com/docs/mcp/). The plugin itself needs no key.
 
 ## What it does
@@ -97,11 +99,11 @@ Two plugins are available in the same marketplace. **Choose one; never install b
 
 ## Changes follow your connection's permissions
 
-Each write permission on your connection is either **gated** (a person approves the change in WisePPC) or
-**direct** (queued and sent without review). The permission decides, not the request. A completed change
-means the change was accepted for sending; confirm the resulting state with a read when it matters. When
-a change fails, Claude reads the reason and can submit a corrected revision, which always waits for a
-person's approval. A refusal names the missing permission; widening it is up to a business owner or admin.
+Each write on your connection is either **gated** (a person approves the change in WisePPC; the default) or
+**direct** (queued and sent without review). The permission decides, not the request. Archiving (deleting)
+campaigns, ad groups, ads and targets is always gated. A completed change means the change was accepted for
+sending; confirm the resulting state with a read when it matters. When a change fails, Claude reads the
+reason and can submit a corrected revision, which follows the same permission. A refusal names the missing permission; widening it is up to a business owner or admin.
 Publishing a Brand Store page is not available; only the page draft can be changed.
 
 ## Update and uninstall

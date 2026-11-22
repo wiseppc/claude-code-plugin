@@ -79,7 +79,7 @@ Raw SQL is an ordinary read: a new connection already has it, so you do not need
 - Confirm the marketplace, date range, time zone and grain from the request and the data. State freshness and metric definitions when they affect the answer.
 - Ground every conclusion in retrieved numbers, say what scope is incomplete, and do not compare incompatible periods or grains.
 - Explain trends and outliers, and flag what needs investigation.
-- Whole listing and catalog records come back size-capped over MCP. If the user needs the complete Amazon-shaped record, that is the WisePPC REST API with an API key (see wiseppc.com/docs/mcp); say so rather than guessing at the missing fields.
+- Whole listing and catalog records come back size-capped over MCP. If the user needs the complete Amazon-shaped record, that is the WisePPC REST API with a short-lived token from `issue_rest_token` (see the `connect` skill); say so rather than guessing at the missing fields.
 - If an account or dataset is refused, report the scope limit and name the missing permission. Do not ask for broader access on your own: widening a connection is for its owner or admin in WisePPC.
 - No data observation authorizes a business change. Do not propose Amazon writes from this skill.
 

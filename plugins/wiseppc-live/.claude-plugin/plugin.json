@@ -1,7 +1,7 @@
 {
   "name": "wiseppc-live",
   "displayName": "WisePPC",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Amazon Ads PPC management and Seller Central analytics in Claude Code. Analyze campaigns, search terms, ASINs, listings, Brand Store and Attribution, then submit bid, budget, keyword, campaign and creative asset changes through WisePPC, approved by a person or sent directly as your connection's permissions decide.",
   "author": {
     "name": "Crystal Logistics Corp / WisePPC",
